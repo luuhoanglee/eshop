@@ -8,8 +8,8 @@
 				<div class="col-12">
 					<div class="bread-inner">
 						<ul class="bread-list">
-							<li><a href="{{route('home')}}">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="javascript:void(0);">Contact</a></li>
+							<li><a href="{{route('home')}}">Trang Chủ<i class="ti-arrow-right"></i></a></li>
+							<li class="active"><a href="javascript:void(0);">Liên Hệ</a></li>
 						</ul>
 					</div>
 				</div>
@@ -29,8 +29,8 @@
 									@php
 										$settings=DB::table('settings')->get();
 									@endphp
-									<h4>Get in touch</h4>
-									<h3>Write us a message @auth @else<span style="font-size:12px;" class="text-danger">[You need to login first]</span>@endauth</h3>
+									<h4>Gửi liên hệ</h4>
+									<h3>Thông tin<span style="font-size:12px;" class="text-danger"></h3>
 								</div>
 								<form class="form-contact form contact_form" method="post" action="{{route('contact.store')}}" id="contactForm" novalidate="novalidate">
 									@csrf
@@ -106,11 +106,12 @@
 	<!--/ End Contact -->
 	
 	<!-- Map Section -->
+	<!--
 	<div class="map-section">
 		<div id="myMap">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14130.857353934944!2d85.36529494999999!3d27.6952226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sne!2snp!4v1595323330171!5m2!1sne!2snp" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6958437920985!2d106.6462559!3d10.757907999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752e8e72556045%3A0x65d381c94c291b9!2zMTk3LzZBIEjDoG4gSOG6o2kgTmd1ecOqbiwgUGjGsOG7nW5nIDIsIFF14bqtbiAxMSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5o!5e0!3m2!1svi!2s!4v1670431264301!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 		</div>
-	</div>
+	</div> -->
 	<!--/ End Map Section -->
 	
 	<!-- Start Shop Newsletter  -->

@@ -13,31 +13,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('leeadmin/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('leeadmin/login', 'Auth\LoginController@login');
+
 Auth::routes(['register'=>false]);
 
 Route::get('user/login','FrontendController@login')->name('login.form');
-Route::post('user/login','FrontendController@loginSubmit')->name('login.submit');
-Route::get('user/logout','FrontendController@logout')->name('user.logout');
+Route::post('user/login','FrontendController@home')->name('login.submit');
+Route::get('user/logout','FrontendController@home')->name('user.logout');
 
 Route::get('user/register','FrontendController@register')->name('register.form');
 Route::post('user/register','FrontendController@registerSubmit')->name('register.submit');
 // Reset password
 Route::post('password-reset', 'FrontendController@showResetForm')->name('password.reset'); 
 // Socialite 
-Route::get('login/{provider}/', 'Auth\LoginController@redirect')->name('login.redirect');
-Route::get('login/{provider}/callback/', 'Auth\LoginController@Callback')->name('login.callback');
+Route::get('/admin/login/{provider}/', 'Auth\LoginController@redirect')->name('login.redirect');
+Route::get('/admin/login/{provider}/callback/', 'Auth\LoginController@Callback')->name('login.callback');
 
 Route::get('/','FrontendController@home')->name('home');
 
 // Frontend Routes
 Route::get('/home', 'FrontendController@index');
+Route::get('/login', 'FrontendController@index');
 Route::get('/about-us','FrontendController@aboutUs')->name('about-us');
 Route::get('/contact','FrontendController@contact')->name('contact');
 Route::post('/contact/message','MessageController@store')->name('contact.store');
 Route::get('product-detail/{slug}','FrontendController@productDetail')->name('product-detail');
 Route::post('/product/search','FrontendController@productSearch')->name('product.search');
 Route::get('/product-cat/{slug}','FrontendController@productCat')->name('product-cat');
-Route::get('/product-sub-cat/{slug}/{sub_slug}','FrontendController@productSubCat')->name('product-sub-cat');
+//Route::get('/product-sub-cat/{slug}/{sub_slug}','FrontendController@productSubCat')->name('product-sub-cat');
+Route::get('/product-sub-cat/{slug}/{sub_slug}',function ($slug,$sub_slug) {
+    return redirect(route('product-cat',$sub_slug));
+})->name('product-sub-cat');
 Route::get('/product-brand/{slug}','FrontendController@productBrand')->name('product-brand');
 // Cart section
 Route::get('/add-to-cart/{slug}','CartController@addToCart')->name('add-to-cart')->middleware('user');
@@ -94,7 +101,7 @@ Route::get('payment/success', 'PayPalController@success')->name('payment.success
 
 // Backend section start
 
-Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
+Route::group(['prefix'=>'/leeadmin','middleware'=>['auth','admin']],function(){
     Route::get('/','AdminController@index')->name('admin');
     Route::get('/file-manager',function(){
         return view('backend.layouts.file-manager');

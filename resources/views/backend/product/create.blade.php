@@ -14,7 +14,13 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-
+        <div class="form-group">
+          <label for="inputNew" class="col-form-label">Mã sản phẩm</label>
+          <input id="inputNew" type="text" name="code" placeholder="Mã sản phẩm"  value="" class="form-control">
+          @error('code')
+          <span class="text-danger">{{$code}}</span>
+          @enderror
+        </div>
         <div class="form-group">
           <label for="summary" class="col-form-label">Summary <span class="text-danger">*</span></label>
           <textarea class="form-control" id="summary" name="summary">{{old('summary')}}</textarea>
@@ -65,7 +71,7 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-
+              <!--
         <div class="form-group">
           <label for="discount" class="col-form-label">Discount(%)</label>
           <input id="discount" type="number" name="discount" min="0" max="100" placeholder="Enter discount"  value="{{old('discount')}}" class="form-control">
@@ -73,17 +79,21 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
+              -->
         <div class="form-group">
           <label for="size">Size</label>
-          <select name="size[]" class="form-control selectpicker"  multiple data-live-search="true">
-              <option value="">--Select any size--</option>
-              <option value="S">Small (S)</option>
-              <option value="M">Medium (M)</option>
-              <option value="L">Large (L)</option>
-              <option value="XL">Extra Large (XL)</option>
-          </select>
+          <input id="size" type="text" name="size" placeholder="size"  value="{{old('size')}}" class="form-control">
+          @error('size')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
         </div>
-
+        <div class="form-group">
+          <label for="inputNew" class="col-form-label">Độ mới của túi</label>
+          <input id="inputNew" type="text" name="new_status" placeholder="Độ mới của túi"  value="{{old('new_status')}}" class="form-control">
+          @error('title')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
         <div class="form-group">
           <label for="brand_id">Brand</label>
           {{-- {{$brands}} --}}

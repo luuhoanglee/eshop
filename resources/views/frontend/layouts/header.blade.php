@@ -1,6 +1,6 @@
 <header class="header shop">
     <!-- Topbar -->
-    <div class="topbar">
+    <div class="topbar" style="display:none">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-12">
@@ -46,47 +46,49 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-12">
-                    <!-- Logo -->
-                    <div class="logo">
-                        @php
-                            $settings=DB::table('settings')->get();
-                        @endphp                    
-                        <a href="{{route('home')}}"><img src="@foreach($settings as $data) {{$data->logo}} @endforeach" alt="logo"></a>
-                    </div>
-                    <!--/ End Logo -->
-                    <!-- Search Form -->
-                    <div class="search-top">
-                        <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+                        <!-- Logo -->
+                        <div class="logo" style="width:100%;text-align:center">
+                            @php
+                                $settings=DB::table('settings')->get();
+                            @endphp                    
+                            <a href="{{route('home')}}"><img style="width:130px" src="@foreach($settings as $data) {{$data->logo}}?v=1 @endforeach" alt="logo"></a>
+                        </div>
+                        <!--/ End Logo -->
                         <!-- Search Form -->
-                        <div class="search-top">
-                            <form class="search-form">
-                                <input type="text" placeholder="Search here..." name="search">
-                                <button value="search" type="submit"><i class="ti-search"></i></button>
-                            </form>
+                        <div class="search-top" style="margin-top:50px">
+                            <div class="top-search"><a href="#0"><i style="color:#d9ca71" class="ti-search"></i></a></div>
+                            <!-- Search Form -->
+                            <div class="search-top">
+                                <form class="search-form" action="/product-grids">
+                                    <input type="text" placeholder="Search here..." name="search">
+                                    <button value="search" type="submit"><i class="ti-search"></i></button>
+                                </form>
+                            </div>
+                            <!--/ End Search Form -->
                         </div>
                         <!--/ End Search Form -->
-                    </div>
-                    <!--/ End Search Form -->
-                    <div class="mobile-nav"></div>
+                        <div class="mobile-nav" style="margin-top:50px;position:absolute;z-index:9999;width:150px"></div>
+                        
+                    
                 </div>
                 <div class="col-lg-8 col-md-7 col-12">
                     <div class="search-bar-top">
                         <div class="search-bar">
                             <select>
-                                <option >All Category</option>
+                                <option >Danh mục</option>
                                 @foreach(Helper::getAllCategory() as $cat)
                                     <option>{{$cat->title}}</option>
                                 @endforeach
                             </select>
                             <form method="POST" action="{{route('product.search')}}">
                                 @csrf
-                                <input name="search" placeholder="Search Products Here....." type="search">
+                                <input name="search" placeholder="Tìm kiếm sản phẩm....." type="search">
                                 <button class="btnn" type="submit"><i class="ti-search"></i></button>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-3 col-12">
+                <div class="col-lg-2 col-md-3 col-12" style="display:none">
                     <div class="right-bar">
                         <!-- Search Form -->
                         <div class="sinlge-bar shopping">
@@ -183,19 +185,19 @@
             <div class="cat-nav-head">
                 <div class="row">
                     <div class="col-lg-12 col-12">
-                        <div class="menu-area">
+                        <div class="menu-area" >
                             <!-- Main Menu -->
                             <nav class="navbar navbar-expand-lg">
                                 <div class="navbar-collapse">	
                                     <div class="nav-inner">	
-                                        <ul class="nav main-menu menu navbar-nav">
-                                            <li class="{{Request::path()=='home' ? 'active' : ''}}"><a href="{{route('home')}}">Home</a></li>
-                                            <li class="{{Request::path()=='about-us' ? 'active' : ''}}"><a href="{{route('about-us')}}">About Us</a></li>
-                                            <li class="@if(Request::path()=='product-grids'||Request::path()=='product-lists')  active  @endif"><a href="{{route('product-grids')}}">Products</a><span class="new">New</span></li>												
+                                        <ul class="nav main-menu menu navbar-nav" style="text-align:center;margin-left:-15px">
+                                            <li class="{{Request::path()=='home' ? 'active' : ''}}"><a href="{{route('home')}}">Trang Chủ</a></li>
+                                            <li class="{{Request::path()=='about-us' ? 'active' : ''}}"><a href="{{route('about-us')}}">Giới Thiệu</a></li>
+                                            <!--<li class="@if(Request::path()=='product-grids'||Request::path()=='product-lists')  active  @endif"><a href="{{route('product-grids')}}">Sản Phẩm</a></li>	-->											
                                                 {{Helper::getHeaderCategory()}}
-                                            <li class="{{Request::path()=='blog' ? 'active' : ''}}"><a href="{{route('blog')}}">Blog</a></li>									
+                                            <li class="{{Request::path()=='blog' ? 'active' : ''}}"><a href="{{route('blog')}}">Tin Tức</a></li>									
                                                
-                                            <li class="{{Request::path()=='contact' ? 'active' : ''}}"><a href="{{route('contact')}}">Contact Us</a></li>
+                                            <li class="{{Request::path()=='contact' ? 'active' : ''}}"><a href="{{route('contact')}}">Liên Hệ</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -209,3 +211,18 @@
     </div>
     <!--/ End Header Inner -->
 </header>
+<style>
+    .slicknav_nav li, .slicknav_nav ul {
+        display: block;
+        background-color: #003c35;
+        padding-bottom:5px;
+        font-weight:100;
+    }
+    .slicknav_nav li::after{
+        content:'';
+        display:block;
+        margin-left:35px;
+        width:100px;  
+        border-bottom: 0.5px solid #d9ca71;  
+    }
+</style>

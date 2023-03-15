@@ -5,65 +5,55 @@
 		<div class="footer-top section">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-5 col-md-6 col-12">
+					<div class="col-lg-7 col-md-6 col-12" style="text-align:center">
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="index.html"><img src="{{asset('backend/img/logo2.png')}}" alt="#"></a>
+								<a href=""><img style="width:200px" src="{{asset('backend/img/logo.png?v=1')}}" alt="#"></a>
 							</div>
 							@php
 								$settings=DB::table('settings')->get();
 							@endphp
-							<p class="text">@foreach($settings as $data) {{$data->short_des}} @endforeach</p>
-							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">@foreach($settings as $data) {{$data->phone}} @endforeach</a></span></p>
+							<p class="text">@foreach($settings as $data) {!!$data->short_des!!} @endforeach</p>
+							<p class="call"><span><a href="tel:{{$data->phone}}">@foreach($settings as $data) {{$data->phone}} @endforeach</a></span></p>
 						</div>
 						<!-- End Single Widget -->
 					</div>
-					<div class="col-lg-2 col-md-6 col-12">
+					<div class="col-lg-5 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer links">
-							<h4>Information</h4>
+							<h4>Thông tin</h4>
 							<ul>
-								<li><a href="{{route('about-us')}}">About Us</a></li>
+								<li><a href="{{route('about-us')}}">Giới thiệu</a></li>
+								<!--
 								<li><a href="#">Faq</a></li>
 								<li><a href="#">Terms & Conditions</a></li>
-								<li><a href="{{route('contact')}}">Contact Us</a></li>
 								<li><a href="#">Help</a></li>
+-->						
+								<li><a href="{{route('contact')}}">Liên hệ</a></li>
+								<li> Cửa Hàng </li>
+								
 							</ul>
 						</div>
+						<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v15.0" nonce="6wVuZ554"></script>
+						<div class="fb-page" 
+						data-href="https://www.facebook.com/japan.2ndbags"
+						data-width="380" data-height="300"
+						data-hide-cover="false"
+						data-show-facepile="false"></div>
 						<!-- End Single Widget -->
-					</div>
-					<div class="col-lg-2 col-md-6 col-12">
-						<!-- Single Widget -->
-						<div class="single-footer links">
-							<h4>Customer Service</h4>
-							<ul>
-								<li><a href="#">Payment Methods</a></li>
-								<li><a href="#">Money-back</a></li>
-								<li><a href="#">Returns</a></li>
-								<li><a href="#">Shipping</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-							</ul>
-						</div>
-						<!-- End Single Widget -->
-					</div>
-					<div class="col-lg-3 col-md-6 col-12">
-						<!-- Single Widget -->
-						<div class="single-footer social">
-							<h4>Get In Tuch</h4>
+						<div class="single-footer social" style="margin-top:15px">
 							<!-- Single Widget -->
 							<div class="contact">
-								<ul>
-									<li>@foreach($settings as $data) {{$data->address}} @endforeach</li>
-									<li>@foreach($settings as $data) {{$data->email}} @endforeach</li>
-									<li>@foreach($settings as $data) {{$data->phone}} @endforeach</li>
-								</ul>
+								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6958437920985!2d106.6462559!3d10.757907999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752e8e72556045%3A0x65d381c94c291b9!2zMTk3LzZBIEjDoG4gSOG6o2kgTmd1ecOqbiwgUGjGsOG7nW5nIDIsIFF14bqtbiAxMSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5o!5e0!3m2!1svi!2s!4v1670431264301!5m2!1svi!2s" width="380" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 							</div>
 							<!-- End Single Widget -->
 							<div class="sharethis-inline-follow-buttons"></div>
 						</div>
-						<!-- End Single Widget -->
 					</div>
+					
+					
 				</div>
 			</div>
 		</div>
@@ -74,14 +64,16 @@
 					<div class="row">
 						<div class="col-lg-6 col-12">
 							<div class="left">
-								<p>Copyright © {{date('Y')}} <a href="https://github.com/Prajwal100" target="_blank">Prajwal Rai</a>  -  All Rights Reserved.</p>
+								<p>Copyright © {{date('Y')}} <a href="https://hungminhits.com" target="_blank">Hùng Minh ITS</a>  -  All Rights Reserved.</p>
 							</div>
 						</div>
+						<!--
 						<div class="col-lg-6 col-12">
 							<div class="right">
 								<img src="{{asset('backend/img/payments.png')}}" alt="#">
 							</div>
 						</div>
+-->
 					</div>
 				</div>
 			</div>
@@ -123,7 +115,7 @@
 	<script src="{{asset('frontend/js/easing.js')}}"></script>
 
 	<!-- Active JS -->
-	<script src="{{asset('frontend/js/active.js')}}"></script>
+	<script src="{{asset('frontend/js/active.js?v=9')}}"></script>
 
 	
 	@stack('scripts')

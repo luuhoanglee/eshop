@@ -21,22 +21,26 @@ class FrontendController extends Controller
 {
    
     public function index(Request $request){
-        return redirect()->route($request->user()->role);
+        return redirect()->route();
     }
 
     public function home(){
-        $featured=Product::where('status','active')->where('is_featured',1)->orderBy('price','DESC')->limit(2)->get();
+        $featured=Product::where('status','active')->where('is_featured',1)->orderBy('price','DESC')->limit(1)->get();
         $posts=Post::where('status','active')->orderBy('id','DESC')->limit(3)->get();
-        $banners=Banner::where('status','active')->limit(3)->orderBy('id','DESC')->get();
+        $banners=Banner::where('status','active')->where('position',0)->limit(3)->orderBy('id','DESC')->get();
+        $brands=Brand::where('status','active')->orderBy('id','DESC')->get();
         // return $banner;
-        $products=Product::where('status','active')->orderBy('id','DESC')->limit(8)->get();
+        $products_new=Product::where("condition","new")->where('status','active')->orderBy('id','DESC')->limit(6)->get();
+        $products_hot=Product::where("condition","hot")->where('status','active')->orderBy('id','DESC')->limit(10)->get();
         $category=Category::where('status','active')->where('is_parent',1)->orderBy('title','ASC')->get();
         // return $category;
         return view('frontend.index')
                 ->with('featured',$featured)
                 ->with('posts',$posts)
                 ->with('banners',$banners)
-                ->with('product_lists',$products)
+                ->with('product_lists',$products_new)
+                ->with('product_lists_hot',$products_hot)
+                ->with('brand_lists',$brands)
                 ->with('category_lists',$category);
     }   
 
@@ -95,7 +99,7 @@ class FrontendController extends Controller
             $products=$products->where('status','active')->paginate($_GET['show']);
         }
         else{
-            $products=$products->where('status','active')->paginate(9);
+            $products=$products->where('status','active')->paginate(12);
         }
         // Sort by name , price, category
 
@@ -148,7 +152,7 @@ class FrontendController extends Controller
         // Sort by name , price, category
 
       
-        return view('frontend.pages.product-lists')->with('products',$products)->with('recent_products',$recent_products);
+        return view('frontend.pages.product-grids')->with('products',$products)->with('recent_products',$recent_products);
     }
     public function productFilter(Request $request){
             $data= $request->all();
@@ -196,7 +200,7 @@ class FrontendController extends Controller
                 return redirect()->route('product-grids',$catURL.$brandURL.$priceRangeURL.$showURL.$sortByURL);
             }
             else{
-                return redirect()->route('product-lists',$catURL.$brandURL.$priceRangeURL.$showURL.$sortByURL);
+                return redirect()->route('product-grids',$catURL.$brandURL.$priceRangeURL.$showURL.$sortByURL);
             }
     }
     public function productSearch(Request $request){
@@ -218,7 +222,7 @@ class FrontendController extends Controller
             return view('frontend.pages.product-grids')->with('products',$products->products)->with('recent_products',$recent_products);
         }
         else{
-            return view('frontend.pages.product-lists')->with('products',$products->products)->with('recent_products',$recent_products);
+            return view('frontend.pages.product-grids')->with('products',$products->products)->with('recent_products',$recent_products);
         }
 
     }
@@ -231,7 +235,7 @@ class FrontendController extends Controller
             return view('frontend.pages.product-grids')->with('products',$products->products)->with('recent_products',$recent_products);
         }
         else{
-            return view('frontend.pages.product-lists')->with('products',$products->products)->with('recent_products',$recent_products);
+            return view('frontend.pages.product-grids')->with('products',$products->products)->with('recent_products',$recent_products);
         }
 
     }
@@ -244,7 +248,7 @@ class FrontendController extends Controller
             return view('frontend.pages.product-grids')->with('products',$products->sub_products)->with('recent_products',$recent_products);
         }
         else{
-            return view('frontend.pages.product-lists')->with('products',$products->sub_products)->with('recent_products',$recent_products);
+            return view('frontend.pages.product-grids')->with('products',$products->sub_products)->with('recent_products',$recent_products);
         }
 
     }

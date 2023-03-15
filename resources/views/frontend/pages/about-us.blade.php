@@ -11,8 +11,8 @@
 				<div class="col-12">
 					<div class="bread-inner">
 						<ul class="bread-list">
-							<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="blog-single.html">About Us</a></li>
+							<li><a href="index1.html">Trang Chủ<i class="ti-arrow-right"></i></a></li>
+							<li class="active"><a href="blog-single.html">Giới thiệu</a></li>
 						</ul>
 					</div>
 				</div>
@@ -30,11 +30,11 @@
 							@php
 								$settings=DB::table('settings')->get();
 							@endphp
-							<h3>Welcome To <span>Eshop</span></h3>
-							<p>@foreach($settings as $data) {{$data->description}} @endforeach</p>
+							<h3>Welcome To <span>Chất Luxury</span></h3>
+							<p>@foreach($settings as $data) {!! $data->description !!} @endforeach</p>
 							<div class="button">
-								<a href="{{route('blog')}}" class="btn">Our Blog</a>
-								<a href="{{route('contact')}}" class="btn primary">Contact Us</a>
+								<a href="{{route('blog')}}" class="btn">Tin tức</a>
+								<a href="{{route('contact')}}" class="btn primary">Liên hệ</a>
 							</div>
 						</div>
 					</div>
@@ -96,6 +96,7 @@
 		</div>
 	</section>
 	<!-- End Shop Services Area -->
-
+	<!--							
 	@include('frontend.layouts.newsletter')
+							-->
 @endsection

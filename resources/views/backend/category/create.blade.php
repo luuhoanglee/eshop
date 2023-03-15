@@ -30,7 +30,7 @@
         {{-- {{$parent_cats}} --}}
 
         <div class="form-group d-none" id='parent_cat_div'>
-          <label for="parent_id">Parent Category</label>
+          <label for="parent_id">Danh mục cha</label>
           <select name="parent_id" class="form-control">
               <option value="">--Select any category--</option>
               @foreach($parent_cats as $key=>$parent_cat)
@@ -55,7 +55,13 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-        
+        <div class="form-group">
+          <label for="inputSort" class="col-form-label">Thứ tự hiển thị</label>
+          <input id="inputSort" type="text" name="sort" placeholder="Thứ tự hiển thị"  value="{{old('sort')}}" class="form-control">
+          @error('sort')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
         <div class="form-group">
           <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
           <select name="status" class="form-control">

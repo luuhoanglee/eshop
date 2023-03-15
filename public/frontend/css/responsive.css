@@ -6,7 +6,7 @@ Description: Eshop - eCommerce HTML5 Template.
 Version:1.0
 ========================================*/
 /* Tablet Screen */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 300px) and (max-width: 991px) {
 .section{
 	padding:50px 0px;
 }
@@ -99,6 +99,7 @@ Version:1.0
 }
 .navbar-nav {
 	display: inline-block !important;
+	padding-top:80px;
 }
 .header.shop .nav li {
 	display:inline-block;
@@ -379,6 +380,8 @@ Version:1.0
 	background: transparent;
 	padding: 0;
 	margin: 6px 0 0;
+	position: absolute;
+	left: 15px;
 }
 .slicknav_menu .slicknav_icon-bar{
 	box-shadow:none;
@@ -395,7 +398,7 @@ Version:1.0
 }
 .slicknav_nav li a{
 	margin: 0;
-	color: #333;
+	color: #d9ca71;
 	background: transparent;
 	overflow: hidden;
 }
@@ -403,7 +406,7 @@ Version:1.0
 	display:none;
 }
 .slicknav_nav li:hover a{
-	color:#F7941D;
+	color:#d9ca71;
 	background:transparent;
 }
 .slicknav_nav li:hover{
@@ -413,11 +416,11 @@ Version:1.0
 	background:transparent;
 }
 .slicknav_nav li .dropdown li a{
-	color:#555;
+	color:#d9ca71;
 	background:transparent;
 }
 .slicknav_nav li .dropdown li a:hover{
-	color:#F7941D;
+	color:#d9ca71;
 	background:transparent;
 }
 .slicknav_nav li .slicknav_item{
@@ -433,12 +436,12 @@ Version:1.0
 	padding-bottom:0px;
 }
 .slicknav_menu .slicknav_icon-bar {
-	background-color: #F7941D;
+	background-color: #d9ca71;
 	box-shadow: none;
 	text-shadow: none;
 }
 .slicknav_nav .slicknav_arrow{
-	color:#F7941D;
+	color:#d9ca71;
 }
 .slicknav_menu .slicknav_icon-bar {
 	display: block;
@@ -467,10 +470,10 @@ Version:1.0
 	width:100%;
 }
 .header.sticky .middle-inner{
-	position:fixed;
+	/*position:fixed;*/
 	top:0;
 	left:0;
-	background:#fff;
+	/*background:#fff;*/
 	animation: fadeInDown 1s both 0.2s;
 	-webkit-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
@@ -680,11 +683,12 @@ Version:1.0
 	text-align: center;
 }
 .shop.single .product-des .size {
+	display:block;
 	margin-top: 10px;
 }
 .shop.single .product-des .short h4 {
-	font-size: 20px;
-	font-weight: 500;
+	font-size: 24px;
+	font-weight: 300;
 	margin-top: 0;
 	line-height: 24px;
 }
@@ -884,7 +888,7 @@ Version:1.0
 	width: 50%;
 	height: 100%;
 	border-bottom: 1px solid #e6ebee;
-	background: #F7941D;
+	background: #d9ca71;
 	color: #fff;
 	border: none;
 }
@@ -1019,6 +1023,7 @@ Version:1.0
 }
 .footer .single-footer {
 	padding:20px 0;
+	text-align: center;
 }
 .modal-dialog .quickview-slider-active {
 	display: none;
@@ -1105,10 +1110,11 @@ Version:1.0
 	margin: 0;
 	background: transparent;
 	padding-top: 15px;
+	padding-top:80px;
 }
 .slicknav_nav li a{
 	margin: 0;
-	color: #333;
+	color: #d9ca71;
 	background: transparent;
 	overflow: hidden;
 }
@@ -1116,21 +1122,21 @@ Version:1.0
 	display:none;
 }
 .slicknav_nav li:hover a{
-	color:#F7941D;
+	color:#d9ca71;
 	background:transparent;
 }
 .slicknav_nav li:hover{
-	background:transparent;
+	background:#003c35;
 }
 .slicknav_nav li .dropdown li:hover{
 	background:transparent;
 }
 .slicknav_nav li .dropdown li a{
-	color:#555;
+	color:#d9ca71;
 	background:transparent;
 }
 .slicknav_nav li .dropdown li a:hover{
-	color:#F7941D;
+	color:#d9ca71;
 	background:transparent;
 }
 .slicknav_nav li .slicknav_item{
@@ -1140,18 +1146,18 @@ Version:1.0
 	padding: 0;
 	margin: 0;
 	padding: 6px 0;
-	font-weight: 500;
+	font-weight: 100;
 }
 .slicknav_nav li:last-child a{
 	padding-bottom:0px;
 }
 .slicknav_menu .slicknav_icon-bar {
-	background-color: #F7941D;
+	background-color: #d9ca71;
 	box-shadow: none;
 	text-shadow: none;
 }
 .slicknav_nav .slicknav_arrow{
-	color:#F7941D;
+	color:#d9ca71;
 }
 .slicknav_menu .slicknav_icon-bar {
 	display: block;
@@ -1180,7 +1186,7 @@ Version:1.0
 .header.shop .search-top {
 	display:block;
 	position: absolute;
-	right: 50px;
+	right: 30px;
 	top: 4px;
 }
 .header.shop .logo {
@@ -1190,12 +1196,15 @@ Version:1.0
 	padding:50px 0px;
 }
 .section-title {
+	background-color: #003c35;
 	margin-bottom: 30px;
-	padding: 0px 20px;
+	padding: 20px;
 }
 .section-title h2 {
-	font-size: 22px;
-	margin-bottom: 20px;
+	font-size: 24px;
+	margin-bottom: 0px;
+	color: #d9cb71;
+	font-weight: 300;
 }
 .section-title p {
 	font-size: 13px;
@@ -1676,4 +1685,49 @@ Version:1.0
 	font-size: 15px;
 	margin: 10px 0 10px;
 }
+
+
+.list-cat-reorder{
+	order:2
+}
+
+/* Banner Sliding */
+#Gslider .carousel-inner {
+	background: #000000;
+	color:black;
+	}
+
+	#Gslider .carousel-inner{
+	/*height: 550px;*/
+	}
+	#Gslider .carousel-inner img{
+		width: 100% !important;
+		opacity: .8;
+	}
+
+	#Gslider .carousel-inner .carousel-caption {
+	bottom: 2%;
+	}
+
+	#Gslider .carousel-inner .carousel-caption h1 {
+	font-size: 28px;
+	font-weight: bold;
+	line-height: 100%;
+	color: #F7941D;
+	}
+
+	#Gslider .carousel-inner .carousel-caption h2 {
+		font-size: 24px;
+		}
+
+	#Gslider .carousel-inner .carousel-caption p {
+	font-size: 14px;
+	color: black;
+	margin: 28px 0 28px 0;
+	}
+
+	#Gslider .carousel-indicators {
+	bottom: 70px;
+	}
+
 }

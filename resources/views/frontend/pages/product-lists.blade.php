@@ -1,9 +1,8 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || PRODUCT PAGE')
+@section('title','CHẤT LUXY || PRODUCT PAGE')
 
 @section('main-content')
-	
 		<!-- Breadcrumbs -->
 		<div class="breadcrumbs">
 			<div class="container">
@@ -30,8 +29,11 @@
 							<div class="shop-sidebar">
                                 <!-- Single Widget -->
                                 <div class="single-widget category">
-                                    <h3 class="title">Categories</h3>
-                                    <ul class="categor-list">
+                                    <h3 class="title">Sản Phẩm<a id="showCategory" href="javascript:;" style="float:right"><i class="fa fa-angle-down"></i></a></h3>
+                                    <script>
+										
+									</script>
+									<ul class="categor-list categor-list-cat" style="display:none">
 										@php
 											// $category = new Category();
 											$menu=App\Models\Category::getAllParentWithChild();
@@ -168,7 +170,7 @@
 												</select>
 											</div>
 										</div>
-										<ul class="view-mode">
+										<ul class="view-mode" style="display:none">
 											<li><a href="{{route('product-grids')}}"><i class="fa fa-th-large"></i></a></li>
 											<li class="active"><a href="javascript:void(0)"><i class="fa fa-th-list"></i></a></li>
 										</ul>
@@ -183,7 +185,7 @@
 										<!-- Start Single List -->
 										<div class="col-12">
 											<div class="row">
-												<div class="col-lg-4 col-md-6 col-sm-6">
+												<div class="col-6 col-lg-4 col-md-6 col-sm-6">
 													<div class="single-product">
 														<div class="product-img">
 															<a href="{{route('product-detail',$product->slug)}}">
@@ -227,7 +229,7 @@
 										<!-- End Single List -->
 									@endforeach
 								@else
-									<h4 class="text-warning" style="margin:100px auto;">There are no products.</h4>
+									<h4 class="text-warning" style="margin:100px auto;">Không có sản phẩm trong danh mục</h4>
 								@endif
 							</div>
 							 <div class="row">
@@ -343,10 +345,6 @@
 														</div>
 														<!--/ End Input Order -->
 													</div>
-													<div class="add-to-cart">
-														<button type="submit" class="btn">Add to cart</button>
-														<a href="{{route('add-to-wishlist',$product->slug)}}" class="btn min"><i class="ti-heart"></i></a>
-													</div>
 												</form>
 												<div class="default-social">
 												<!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
@@ -443,6 +441,17 @@
                 "  -  "+m_currency + $("#slider-range").slider("values", 1));
             }
         })
+
+		$(document).ready(function(){
+			$('#showCategory').click(function(){
+				if($('.categor-list-cat').is(":visible")){
+					$('.categor-list-cat').hide();
+				}else{
+					$('.categor-list-cat').show();
+				}
+			});
+			
+		});
     </script>
 
 @endpush

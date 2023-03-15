@@ -127,11 +127,32 @@ window.onload = () => {
 		/*=======================
 		  Popular Slider JS
 		=========================*/ 
-		$('.popular-slider').owlCarousel({
-			items:1,
+		$('.brand-slider').owlCarousel({
+			
+			items:6,
 			autoplay:true,
-			autoplayTimeout:5000,
-			smartSpeed: 400,
+			autoplayTimeout:1000,
+			smartSpeed: 4500,
+			autoplayHoverPause:true,
+			autoplaySpeed:3500,
+			loop:true,
+			navigation:false,
+			merge:true,
+			dots:false,
+			autoWidth:true,
+			animateIn: 'slideInRight',
+			animateOut: 'fadeOut',
+			slideTransition: 'linear',
+			fluidSpeed: true,
+			dragBeforeAnimFinish: false,
+			margin:15
+		});
+
+		$('.popular-slider').owlCarousel({
+			items:2,
+			autoplay:true,
+			autoplayTimeout:1000,
+			smartSpeed: 4000,
 			animateIn: 'fadeIn',
 			animateOut: 'fadeOut',
 			autoplayHoverPause:true,
@@ -142,10 +163,10 @@ window.onload = () => {
 			navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
 			responsive:{
 				0: {
-					items:1,
+					items:2,
 				},
 				300: {
-					items:1,
+					items:2,
 				},
 				480: {
 					items:2,
@@ -165,8 +186,8 @@ window.onload = () => {
 		$('.quickview-slider-active').owlCarousel({
 			items:1,
 			autoplay:true,
-			autoplayTimeout:5000,
-			smartSpeed: 400,
+			autoplayTimeout:3000,
+			smartSpeed: 2000,
 			autoplayHoverPause:true,
 			nav:true,
 			loop:true,

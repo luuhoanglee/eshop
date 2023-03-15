@@ -15,7 +15,13 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-
+        <div class="form-group">
+            <label for="inputNew" class="col-form-label">Mã sản phẩm</label>
+            <input id="inputNew" type="text" name="code" placeholder="Mã sản phẩm"  value="{{$product->code}}" class="form-control">
+            @error('code')
+            <span class="text-danger">{{$code}}</span>
+            @enderror
+          </div>
         <div class="form-group">
           <label for="summary" class="col-form-label">Summary <span class="text-danger">*</span></label>
           <textarea class="form-control" id="summary" name="summary">{{$product->summary}}</textarea>
@@ -40,7 +46,7 @@
               {{-- {{$categories}} --}}
 
         <div class="form-group">
-          <label for="cat_id">Category <span class="text-danger">*</span></label>
+          <label for="cat_id">Danh mục<span class="text-danger">*</span></label>
           <select name="cat_id" id="cat_id" class="form-control">
               <option value="">--Select any category--</option>
               @foreach($categories as $key=>$cat_data)
@@ -53,14 +59,15 @@
         // dd($sub_cat_info);
 
         @endphp
+
         {{-- {{$product->child_cat_id}} --}}
-        <div class="form-group {{(($product->child_cat_id)? '' : 'd-none')}}" id="child_cat_div">
+        <!-- <div class="form-group {{(($product->child_cat_id)? '' : 'd-none')}}" id="child_cat_div">
           <label for="child_cat_id">Sub Category</label>
           <select name="child_cat_id" id="child_cat_id" class="form-control">
               <option value="">--Select any sub category--</option>
               
           </select>
-        </div>
+        </div> -->
 
         <div class="form-group">
           <label for="price" class="col-form-label">Price(NRS) <span class="text-danger">*</span></label>
@@ -69,7 +76,7 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-
+        <!--
         <div class="form-group">
           <label for="discount" class="col-form-label">Discount(%)</label>
           <input id="discount" type="number" name="discount" min="0" max="100" placeholder="Enter discount"  value="{{$product->discount}}" class="form-control">
@@ -77,22 +84,21 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
+-->
         <div class="form-group">
           <label for="size">Size</label>
-          <select name="size[]" class="form-control selectpicker"  multiple data-live-search="true">
-              <option value="">--Select any size--</option>
-              @foreach($items as $item)              
-                @php 
-                $data=explode(',',$item->size);
-                // dd($data);
-                @endphp
-              <option value="S"  @if( in_array( "S",$data ) ) selected @endif>Small</option>
-              <option value="M"  @if( in_array( "M",$data ) ) selected @endif>Medium</option>
-              <option value="L"  @if( in_array( "L",$data ) ) selected @endif>Large</option>
-              <option value="XL"  @if( in_array( "XL",$data ) ) selected @endif>Extra Large</option>
-              @endforeach
-          </select>
+          <input id="size" type="text" name="size" placeholder="Kích thước"  value="{{$product->size}}" class="form-control">
+            @error('new_status')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
         </div>
+        <div class="form-group">
+            <label for="inputNew" class="col-form-label">Độ Mới</label>
+            <input id="inputNew" type="text" name="new_status" placeholder="Độ mới của túi"  value="{{$product->new_status}}" class="form-control">
+            @error('new_status')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
+          </div>
         <div class="form-group">
           <label for="brand_id">Brand</label>
           <select name="brand_id" class="form-control">

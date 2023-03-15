@@ -27,7 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $parent_cats=Category::where('is_parent',1)->orderBy('title','ASC')->get();
+        //$parent_cats=Category::where('is_parent',1)->orderBy('title','ASC')->get();
+        $parent_cats=Category::orderBy('sort','ASC')->get();
         return view('backend.category.create')->with('parent_cats',$parent_cats);
     }
 
@@ -88,7 +89,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $parent_cats=Category::where('is_parent',1)->get();
+        //$parent_cats=Category::where('is_parent',1)->get();
+        //$parent_cats=Category::orderBy('sort','ASC')->get();
+        $parent_cats=Category::orderBy('sort','ASC')->get();
         $category=Category::findOrFail($id);
         return view('backend.category.edit')->with('category',$category)->with('parent_cats',$parent_cats);
     }
@@ -108,14 +111,16 @@ class CategoryController extends Controller
             'title'=>'string|required',
             'summary'=>'string|nullable',
             'photo'=>'string|nullable',
+            'sort'=>'nullable',
             'status'=>'required|in:active,inactive',
             'is_parent'=>'sometimes|in:1',
             'parent_id'=>'nullable|exists:categories,id',
         ]);
         $data= $request->all();
         $data['is_parent']=$request->input('is_parent',0);
-        // return $data;
+        $data['sort']=$request->input('sort',0);
         $status=$category->fill($data)->save();
+        
         if($status){
             request()->session()->flash('success','Category successfully updated');
         }
@@ -153,7 +158,9 @@ class CategoryController extends Controller
     public function getChildByParent(Request $request){
         // return $request->all();
         $category=Category::findOrFail($request->id);
-        $child_cat=Category::getChildByParentID($request->id);
+        
+        //$child_cat=Category::getChildByParentID($request->id);
+        $child_cat = Category::all();
         // return $child_cat;
         if(count($child_cat)<=0){
             return response()->json(['status'=>false,'msg'=>'','data'=>null]);

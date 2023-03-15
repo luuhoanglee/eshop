@@ -32,6 +32,7 @@ class ProductController extends Controller
     {
         $brand=Brand::get();
         $category=Category::where('is_parent',1)->get();
+        $category=Category::get();
         // return $category;
         return view('backend.product.create')->with('categories',$category)->with('brands',$brand);
     }
@@ -71,12 +72,14 @@ class ProductController extends Controller
         $data['slug']=$slug;
         $data['is_featured']=$request->input('is_featured',0);
         $size=$request->input('size');
+        /*
         if($size){
             $data['size']=implode(',',$size);
         }
         else{
             $data['size']='';
         }
+        */
         // return $size;
         // return $data;
         $status=Product::create($data);
@@ -112,6 +115,7 @@ class ProductController extends Controller
         $brand=Brand::get();
         $product=Product::findOrFail($id);
         $category=Category::where('is_parent',1)->get();
+        $category=Category::get();
         $items=Product::where('id',$id)->get();
         // return $items;
         return view('backend.product.edit')->with('product',$product)
@@ -149,14 +153,20 @@ class ProductController extends Controller
         $data=$request->all();
         $data['is_featured']=$request->input('is_featured',0);
         $size=$request->input('size');
+        /*
         if($size){
             $data['size']=implode(',',$size);
         }
         else{
             $data['size']='';
         }
+        */
         // return $data;
+        // $game = $product->fill($data);
+        // var_dump($game);
+        // exit;
         $status=$product->fill($data)->save();
+
         if($status){
             request()->session()->flash('success','Product Successfully updated');
         }

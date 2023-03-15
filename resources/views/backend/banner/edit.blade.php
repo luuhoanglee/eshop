@@ -39,7 +39,23 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-        
+        <div class="form-group">
+          <label for="position" class="col-form-label">Vị trí <span class="text-danger">*</span></label>
+          <select name="position" class="form-control">
+          <option value="0" {{(($banner->position==0) ? 'selected' : '')}}>Top Banner</option>
+            <option value="1" {{(($banner->position==1) ? 'selected' : '')}}>Giữa Trang</option>
+          </select>
+          @error('position')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
+        <div class="form-group">
+          <label for="link" class="col-form-label">Đường dẫn liên kết</label>
+          <input id="link" type="text" name="link" placeholder="Enter Sort"  value="{{$banner->link}}" class="form-control">
+          @error('link')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
         <div class="form-group">
           <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
           <select name="status" class="form-control">
